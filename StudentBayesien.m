@@ -1,6 +1,6 @@
 %__Badreddine
-%Mod�lisation des classes avec la famille de distribution T-Student
-%distribution
+%Leave one out avant de modéliser les distributions de données, 
+%Classifier l'élément tiré en utilisant la règle de bayes sur les distributions de student 
 
 clear
 clc
@@ -8,51 +8,23 @@ Seed=33;
 randn('seed',Seed);
 rand('seed',Seed);
 % 
-filenameA = '/Users/badr/Desktop/PSO/database/Origine FR, FT, FT+FR/OA_FR.txt';
-filenameB = '/Users/badr/Desktop/PSO/database/Origine FR, FT, FT+FR/OA_FT.txt';
-filenameC = '/Users/badr/Desktop/PSO/database/Origine FR, FT, FT+FR/OA_FR_FT.txt';
-% 
-% filenameA = '/Users/badr/Desktop/PSO/database/Database 20-06-2016/Region_OA_FR.txt';
-% filenameB = '/Users/badr/Desktop/PSO/database/Database 20-06-2016/Region_OA_FT.txt';
-% filenameC = '/Users/badr/Desktop/PSO/database/Database 20-06-2016/Region_OA_FR_FT.txt';
-% % % 
-%  filenameA = '/Users/badr/Desktop/PSO/database/Database 20-06-2016/Mean_OA_FR_Valid.txt';
-%  filenameB = '/Users/badr/Desktop/PSO/database/Database 20-06-2016/Mean_OA_FT_Valid.txt';
-%  filenameC = '/Users/badr/Desktop/PSO/database/Database 20-06-2016/Mean_OA_FR_FT_Valid.txt';
-% % 
-% % 
-% filenameA = '/Users/badr/Desktop/PSO/database/Database 20-06-2016/OA FR/Corrected_OA_FR.txt';
-% filenameB = '/Users/badr/Desktop/PSO/database/Database 20-06-2016/OA FT/Corrected_OA_FT.txt';
-% filenameC = '/Users/badr/Desktop/PSO/database/Database 20-06-2016/OA FR FT/Corrected_OA_FR_FT.txt';
-
+filenameA = '/Users/badr/Desktop/database/data1.txt';
+filenameB = '/Users/badr/Desktop/database/data2.txt';
+filenameC = '/Users/badr/Desktop/database/data3.txt';
+ 
 delimiterIn = ' ';
 
 A = importdata(filenameA,delimiterIn);
 B = importdata(filenameB,delimiterIn);
 C = importdata(filenameC,delimiterIn);
-CC = importdata(filenameC,delimiterIn);
-BB = importdata(filenameB,delimiterIn);
-
+ 
 A=A(1:21,:);
 B=B(1:21,:);
 C=C(1:21,:);
-C(4,:)=CC(33,:);
-%C(2,:)=CC(23,:);
-C(3,:)=CC(24,:);
-C(5,:)=CC(26,:);
-C(6,:)=CC(27,:);
-C(7,:)=CC(29,:);
-C(8,:)=CC(28,:);
-C(9,:)=CC(41,:);
-C(10,:)=CC(51,:);
-C(11,:)=CC(36,:);
-C(12,:)=CC(46,:);
-C(16,:)=CC(37,:);
-C(17,:)=CC(40,:);
-C(18,:)=CC(55,:);
-C(19,:)=CC(57,:);
-C(21,:)=CC(54,:);
- 
+%___________________________________________________________________________________________
+ %Modélisation des classes avec la famille de distribution T-Student distribution
+ %___________________________________________________________________________________________
+
 fprintf('Please Wait Preparing Data Class A ...\n');
 [fittedA1c,fittedA1S,fittedA1nu]=fitt(A);
 fprintf('Please Wait Preparing Data Class B ...\n');
